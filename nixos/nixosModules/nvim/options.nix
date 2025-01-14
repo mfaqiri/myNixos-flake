@@ -18,7 +18,7 @@
     swapfile = false;
     backup = false;
 
-    undodir = "${config.users.users.mfaqiri.home}.vim/undodir";
+    undodir = "${config.users.users.mfaqiri.home}/.vim/undodir";
     undofile = true;
 
     hlsearch = false;

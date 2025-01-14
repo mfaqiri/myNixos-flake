@@ -30,8 +30,7 @@
 
         theme = {
           enable = true;
-          name = "tokyonight";
-          style = "storm";
+          name = "onedark";
         };
         
         viAlias = false;

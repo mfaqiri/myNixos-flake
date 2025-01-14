@@ -104,6 +104,7 @@
 	winetricks
 	adwaita-icon-theme
 	firefox
+  nerdfonts
 
 ];
 
