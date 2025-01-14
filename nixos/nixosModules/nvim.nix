@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   programs.nvf = {
     enable = true;
 
@@ -134,7 +134,7 @@
 
         options = {
           
-guicursor = "";
+          guicursor = "";
 
           nu = true;
           relativenumber = true;

@@ -21,17 +21,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, nvf, lanzaboote, ... }:
+  outputs = { nixpkgs, nvf, lanzaboote, ... }:
     let
         system = "x86_64-linux";
 
-        pkgs = import nixpkgs {
-            inherit system;
-
-            config = {
-                allowUnfree = true;
-            };
-        };
 
         in
         {
