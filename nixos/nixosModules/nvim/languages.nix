@@ -1,53 +1,53 @@
 { ... }: {
 
-programs.nvf.vim.languages = {
+  programs.nvf.settings.vim.languages = {
 
-  enableLSP = true;
-  enableFormat = true;
-  enableTreesitter = true;
+    enableLSP = true;
+    enableFormat = true;
+    enableTreesitter = true;
 
-  assembly.enable = true;
+    assembly.enable = true;
 
-  bash.enable = true;
+    bash.enable = true;
 
-  clang.enable = true;
+    clang.enable = true;
 
-  csharp.enable = true;
+    csharp.enable = true;
 
-  css.enable = true;
+    css.enable = true;
 
-  dart = {
-    enable = true;
+    dart = {
+      enable = true;
 
-    flutter-tools.enable = true;
-  };
+      flutter-tools.enable = true;
+    };
 
-  go.enable = true;
+    go.enable = true;
 
-  html.enable = true;
+    html.enable = true;
 
-  java.enable = true;
+    java.enable = true;
 
-  lua.enable = true;
+    lua.enable = true;
 
-  markdown = {
-    enable = true;
+    markdown = {
+      enable = true;
 
-    extensions.render-markdown-nvim.enable = true;
-  };
+      extensions.render-markdown-nvim.enable = true;
+    };
 
-  nix.enable = true;
+    nix.enable = true;
 
-  php.enable = true;
+    php.enable = true;
 
-  python.enable = true;
+    python.enable = true;
 
-  rust.enable = true;
+    rust.enable = true;
 
-  sql.enable = true;
+    sql.enable = true;
 
-  tailwind.enable = true;
+    tailwind.enable = true;
 
-  ts.enable = true;
+    ts.enable = true;
 };
 }

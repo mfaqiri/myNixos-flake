@@ -1,5 +1,5 @@
-{ ... }: {
-  programs.nvf.vim.options = {
+{ config, ... }: {
+  programs.nvf.settings.vim.options = {
           
     guicursor = "";
 
@@ -18,7 +18,7 @@
     swapfile = false;
     backup = false;
 
-    undodir = "../../.vim/undodir";
+    undodir = "${config.users.users.mfaqiri.home}.vim/undodir";
     undofile = true;
 
     hlsearch = false;

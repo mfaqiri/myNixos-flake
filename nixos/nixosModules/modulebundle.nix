@@ -1,5 +1,5 @@
 { ... }: {
     imports = [
-        ./nvim.nix
+        ./nvim/nvim.nix
     ];
 }

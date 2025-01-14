@@ -1,5 +1,5 @@
 { ... }: {
-  programs.nvf.vim.keymaps = [
+  programs.nvf.settings.vim.keymaps = [
           {
             key = "<leader>pv";
             mode = "n";
@@ -125,5 +125,4 @@
 
  
     ];
-  };
 }

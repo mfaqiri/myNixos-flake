@@ -1,6 +1,6 @@
 { pkgs, ... }: {
     imports = [
-      ./keymaps
+      ./keymaps.nix
       ./options.nix
       ./languages.nix
     ];
@@ -31,6 +31,7 @@
         theme = {
           enable = true;
           name = "tokyonight";
+          style = "storm";
         };
         
         viAlias = false;
