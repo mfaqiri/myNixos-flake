@@ -51,7 +51,6 @@
   # hardware.pulseaudio.enable = true;
   # OR
 
-  services.ntp.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -115,9 +114,12 @@
     openssh.enable = true;
 
     flatpak.enable = true;
+  
+    ntp.enable = true;
 
-    polkit.enable = true;
   };
+
+    security.polkit.enable = true;
 
 
 

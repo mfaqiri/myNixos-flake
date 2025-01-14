@@ -51,21 +51,24 @@
   # hardware.pulseaudio.enable = true;
   # OR
 
-  services.ntp.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
-  security.pam.loginLimits = [{
-	domain = "*";
-	type = "-";
-	item = "memlock";
-	value = "infinity";
+  security = {
+    polkit.enable = true;
+
+    pam.loginLimits = [{
+      domain = "*";
+      type = "-";
+      item = "memlock";
+      value = "infinity";
 
 
-  }];
+    }]
+    };
 
 
   users = {
@@ -115,9 +118,11 @@
     openssh.enable = true;
 
     flatpak.enable = true;
+  
+    ntp.enable = true;
 
-    polkit.enable = true;
   };
+
 
 
 
