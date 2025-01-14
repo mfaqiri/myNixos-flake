@@ -1,4 +1,4 @@
-{ lib, ...}:
+{ config, lib, ...}:
 {
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/b25409dc-8bc6-4643-b4ac-3c563cafbd54";

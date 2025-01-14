@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ config, pkgs, lib, ... }: {
     imports = [
         ./audio.nix
         ./video.nix

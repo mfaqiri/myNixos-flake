@@ -1,4 +1,7 @@
-{ pkgs, ... }: {
+{ config, lib, pkgs, modulesPath, ... }: {
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
     hardware.opentabletdriver.enable = true;
     hardware.decklink.enable = true;

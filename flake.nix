@@ -47,7 +47,7 @@
 
                         lanzaboote.nixosModules.lanzaboote
 
-                        ./nixos/secure-boot.nix
+			            ./nixos/secure-boot.nix
 
                 ];
             };
