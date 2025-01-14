@@ -6,6 +6,22 @@
 
       vim  = {
 
+        binds = {
+          cheatsheet.enable = true;
+          whichKey.enable = true;
+        };
+
+        git = {
+          enable = true;
+
+          gitsigns = {
+            enable = true;
+            codeActions.enable = true;
+          };
+
+          vim-fugitive.enable = true;
+        };
+
         keymaps = [
           {
             key = "<leader>pv";
@@ -182,14 +198,49 @@
         languages = {
 
           enableLSP = true;
+          enableFormat = true;
           enableTreesitter = true;
 
-          nix = {
+          nix.enable = true;
+          assembly.enable = true;
+          bash.enable = true;
+          clang.enable = true;
+          cshare.enable = true;
+          rust.enable = true;
+          css.enable = true;
+          dart = {
             enable = true;
 
-            format.enable = true;
-
+            flutter-tools.enable = true;
           };
+
+          go.enable = true;
+
+          html.enable = true;
+
+          java.enable = true;
+
+          lua.enable = true;
+
+          markdown = {
+            enable = true;
+
+            extensions.render-markdown-nvim.enable = true;
+          };
+
+          php.enable = true;
+
+          python.enable = true;
+
+          sql.enable = true;
+
+          tailwind.enable = true;
+
+          ts.enable = true;
+
+          
+
+
         };
 
         autocomplete.nvim-cmp.enable = true;
