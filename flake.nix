@@ -3,28 +3,12 @@
 
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
-      nvf = {
-      url = "github:notashelf/nvf";
-      # You can override the input nixpkgs to follow your system's
-      # instance of nixpkgs. This is safe to do as nvf does not depend
-      # on a binary cache.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-
-      # Optional but recommended to limit the size of your system closure.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
   };
 
-  outputs = { nixpkgs, nvf, lanzaboote, ... }:
+  outputs = { nixpkgs, ...}:
     let
         system = "x86_64-linux";
-
 
         in
         {
@@ -33,15 +17,7 @@
                     specialArgs = { inherit system; };
 
                     modules = [
-
-                        nvf.nixosModules.default
-
                         ./nixos/configuration.nix
-
-                        lanzaboote.nixosModules.lanzaboote
-
-                        ./nixos/secure-boot.nix
-
                 ];
             };
         };

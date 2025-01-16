@@ -16,6 +16,9 @@
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -102,9 +105,8 @@
 	lutris
 	heroic
 	winetricks
-	adwaita-icon-theme
+	gnome.adwaita-icon-theme
 	firefox
-  nerdfonts
 
 ];
 
@@ -114,12 +116,13 @@
   services = {
     gnome.gnome-keyring.enable = true;
     dbus.enable = true;
-    xserver.enable = false;
+    xserver.enable = true;
+    xserver.displayManager.lightdm.enable = false;
 
     openssh.enable = true;
 
     flatpak.enable = true;
-  
+
     ntp.enable = true;
 
   };
