@@ -1,12 +1,12 @@
 { ... }:
 {
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b25409dc-8bc6-4643-b4ac-3c563cafbd54";
+    { device = "/dev/disk/by-label/NIXROOT";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5C56-C571";
+    { device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -30,6 +30,6 @@
 
 
   swapDevices = [ {
-     device = "/dev/nvme0n1p2";
+     device = "/dev/by-label/NIXSWAP";
   }];
 }

@@ -105,7 +105,7 @@
 	lutris
 	heroic
 	winetricks
-	gnome.adwaita-icon-theme
+	adwaita-icon-theme
 	firefox
 
 ];

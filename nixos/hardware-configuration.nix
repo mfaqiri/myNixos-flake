@@ -39,7 +39,7 @@
     enable = true;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
 };
   services.udev.extraRules = ''
