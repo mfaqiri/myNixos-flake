@@ -30,6 +30,6 @@
 
 
   swapDevices = [ {
-     device = "/dev/by-label/NIXSWAP";
+     device = "/dev/disk/by-label/NIXSWAP";
   }];
 }
