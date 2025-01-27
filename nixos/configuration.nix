@@ -88,7 +88,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
- 	blender
+    shadps4
+    blender
 	wget
 	clinfo
 	home-manager
@@ -107,7 +108,7 @@
 	winetricks
 	adwaita-icon-theme
 	firefox
-
+    kitty
 ];
 
 
