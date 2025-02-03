@@ -88,6 +88,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    blackmagic-desktop-video
     shadps4
     blender
 	wget

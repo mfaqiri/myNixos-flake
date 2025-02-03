@@ -22,8 +22,14 @@
       options = [ "rw" "relatime" ];
     };
 
-   fileSystems."/mnt/nvme1n1" =
+   fileSystems."/mnt/nvme2n1" =
     { device = "/dev/disk/by-uuid/11f3f850-412a-495d-939a-9ef29de0fffa";
+      fsType = "ext4";
+      options = [ "rw" "relatime" ];
+    };
+
+   fileSystems."/mnt/nvme1n1" =
+    { device = "/dev/disk/by-uuid/1995e089-e101-410b-a378-a951afa32246";
       fsType = "ext4";
       options = [ "rw" "relatime" ];
     };
