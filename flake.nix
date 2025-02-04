@@ -3,7 +3,7 @@
 
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +37,7 @@
                     nvf.homeManagerModules.default
                     ./home-manager/home.nix
                 ];
+        desktopbundle.enable = true;
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

@@ -1,6 +1,7 @@
 { ... }: {
     imports = [
-    #        ./nvim/nvim.nix
+        ./sway.nix
         ./tmux/tmux.nix
+        ./virtualisation.nix
     ];
 }

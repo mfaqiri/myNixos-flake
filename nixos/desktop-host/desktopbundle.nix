@@ -1,10 +1,19 @@
-{ ... }: {
+{ lib, config, ... }: {
+
+    options = {
+        desktopbundle.enable = lib.mkEnableOption "enables desktop bundle";
+    };
+
+    config = lib.mkIf config.desktop.enable {
+
     imports = [
         ./audio.nix
-        ./video.nix
         ./disks.nix
+        ./games.nix
         ./hardware.nix
         ./network.nix
-        ./virtualisation.nix
+        ./security.nix
+        ./video.nix
     ];
+    };
 }

@@ -12,7 +12,7 @@
 
 
 
- nixpkgs.config.allowUnfree = true;
+     nixpkgs.config.allowUnfree = true;
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -60,18 +60,6 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
-  security = {
-    polkit.enable = true;
-
-    pam.loginLimits = [{
-      domain = "*";
-      type = "-";
-      item = "memlock";
-      value = "infinity";
-
-
-    }];
-    };
 
 
   users = {
@@ -88,25 +76,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    blackmagic-desktop-video
-    shadps4
-    blender
 	wget
 	clinfo
 	home-manager
-	mangohud
-	mako
-	fuzzel
-	waybar
-	ffmpeg
-	grim
-	slurp
-	wineWowPackages.staging
 	git
-	protonup
-	lutris
-	heroic
-	winetricks
 	adwaita-icon-theme
 	firefox
     kitty
@@ -130,17 +103,6 @@
   };
 
 
-
-
-
-
-  xdg.portal = {
-	enable = true;
-	wlr.enable = true;
-  };
-
-
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -156,34 +118,6 @@
      enableSSHSupport = true;
    };
 
- 	noisetorch.enable = true;
-  	sway = {
-		enable = true;
-		wrapperFeatures.gtk = true;
-	};
-	gamemode.enable = true;
- 	steam = {
-		enable = true;
-		remotePlay.openFirewall = true;
-		localNetworkGameTransfers.openFirewall = true;
-		gamescopeSession = {
-		enable = true;
-		env = {
-			AMD_VULKAN_ICD = "RADV";
-			DXVK_HDR = "1";
-		};
-		args = [
-			"--adaptive-sync"
-			"--hdr-enabled"
-			"--hdr-itm-enable"
-			"--rt"
-			"--steam"
-			"--prefer-output HDMI-A-1"
-			"--output-width 3840"
-			"--output-height 2160"
-		];
-		};
-		};
 
  };
 

@@ -4,6 +4,7 @@
 	pavucontrol
 	ardour
 	spotify
+	ffmpeg
     ];
 
   environment.etc."wireplumber/main.lua.d/99-alsa-config.conf".text = ''

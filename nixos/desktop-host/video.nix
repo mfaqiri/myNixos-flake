@@ -7,6 +7,7 @@
 
 
   environment.systemPackages = with pkgs; [
+    blender
 	v4l-utils
 	libsForQt5.kdenlive
 	(pkgs.wrapOBS {
