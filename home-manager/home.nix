@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     imports = [
@@ -81,15 +81,20 @@
 
       shellAliases = {
           ll = "ls -l";
-          update = "sudo nixos-rebuild switch";
+          update = "sudo nixos-rebuild switch --flake /home/mfaqiri/mysystem#myNixos";
       };
 
-      oh-my-zsh = {
+      zplug = {
           enable = true;
-          plugins = [ "git" "sudo" "docker" "kubectl" ];
-          theme = "robbyrussel";
-          
-      };
+          plugins = [
+                    { name = "zsh-users/zsh-autosuggestions"; }
+                    {
+                        name = "ergenekonyigit/lambda-gitster";
+                        tags = [ "as:theme" ];
+                    }
+
+                ];
+            };
 
       
         history.size = 10000;
