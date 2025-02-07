@@ -11,7 +11,7 @@
     nvf.url = "github:notashelf/nvf";
   };
 
-  outputs = { nixpkgs, home-manager, nvf, ...}:
+  outputs = { self, nixpkgs, ...}@inputs:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -24,24 +24,11 @@
 
                     modules = [
                         ./nixos/configuration.nix
+                        inputs.home-manager.nixosModules.default
+                        inputs.nvf.homeManagerModules.default
                 ];
             };
         };
-
-      homeConfigurations."mfaqiri" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-                    nvf.homeManagerModules.default
-                    ./home-manager/home.nix
-                ];
-        desktopbundle.enable = true;
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
 
     };
 

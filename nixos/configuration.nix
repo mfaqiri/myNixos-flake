@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -70,10 +70,36 @@
 	  mfaqiri = {
 	    isNormalUser = true;
 	    extraGroups = [ "wheel" "power" "storage" "networkmanager" "sudo" "audio" "video" "tss" "libvirtd" "rtkit" ]; # Enable ‘sudo’ for the user.
+        packages = with pkgs; [
+    makemkv
+    zoom-us
+    fira-code
+    fira-code-symbols
+    font-awesome
+    liberation_ttf
+    mplus-outline-fonts.githubRelease
+    noto-fonts
+    noto-fonts-emoji
+    proggyfonts
+    parsec-bin
+    transmission_4-gtk
+    discord
+
+                ];
 
   };
   };
   };
+
+
+
+  home-manager = {
+        extraSpecialArgs = { inherit inputs; };
+        users = {
+            "mfaqiri" = import ../home-manager/home.nix;
+        };
+
+    };
 
 
 
@@ -84,7 +110,6 @@
     hunspell
 	wget
 	clinfo
-	home-manager
 	git
 	adwaita-icon-theme
 	firefox
