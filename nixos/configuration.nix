@@ -61,6 +61,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
 
+ security.polkit.enable = true;
+
 
   users = {
   	users = {
@@ -76,6 +78,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    libreoffice
+    hunspell
 	wget
 	clinfo
 	home-manager
@@ -89,14 +93,13 @@
 
 
   services = {
+    flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     dbus.enable = true;
     xserver.enable = true;
     xserver.displayManager.lightdm.enable = false;
 
     openssh.enable = true;
-
-    flatpak.enable = true;
 
     ntp.enable = true;
 

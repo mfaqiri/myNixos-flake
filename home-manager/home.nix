@@ -3,6 +3,7 @@
 {
     imports = [
         ./nvim/nvim.nix
+        #        ./sway.nix
     ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -24,8 +25,8 @@
     fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-        makemkv
-        zoom-us
+    makemkv
+    zoom-us
     fira-code
     fira-code-symbols
     font-awesome
@@ -35,7 +36,7 @@
     noto-fonts-emoji
     proggyfonts
     parsec-bin
-        transmission_4-gtk
+    transmission_4-gtk
     discord
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
