@@ -72,16 +72,11 @@
   };
 
 	programs = {
-    yazi.enable = true;
 
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-      options = [ "--cmd cd" ];
-    };
     zsh = {
       enable = true;
       enableCompletion = true;
+      autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
 
       shellAliases = {
@@ -93,7 +88,20 @@
           enable = true;
           plugins = [ "git" "sudo" "docker" "kubectl" ];
           theme = "robbyrussel";
+          
       };
+
+      
+        history.size = 10000;
+        history.ignoreAllDups = true;
+        history.path = "$HOME/.zsh_history";
+    };
+    yazi.enable = true;
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      options = [ "--cmd cd" ];
     };
 
  };

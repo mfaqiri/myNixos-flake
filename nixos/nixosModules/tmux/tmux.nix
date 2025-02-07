@@ -3,6 +3,7 @@
     enable = true;
 
     extraConfigBeforePlugins = ''
+
        set -g mouse on 
 
        # Set prefix
@@ -34,6 +35,7 @@
       sensible
       yank
       vim-tmux-navigator
+      tmux-fzf
     ];
   };
 }

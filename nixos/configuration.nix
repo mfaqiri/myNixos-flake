@@ -65,10 +65,12 @@
 
 
   users = {
+    defaultUserShell = pkgs.zsh;
   	users = {
 	  mfaqiri = {
 	    isNormalUser = true;
 	    extraGroups = [ "wheel" "power" "storage" "networkmanager" "sudo" "audio" "video" "tss" "libvirtd" "rtkit" ]; # Enable ‘sudo’ for the user.
+
   };
   };
   };
@@ -115,6 +117,7 @@
   # Enable the OpenSSH daemon.
 
  programs = {
+  zsh.enable = true;
 
   gnupg.agent = {
      enable = true;
