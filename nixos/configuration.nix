@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ inputs, config,pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -18,7 +18,7 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux_6_12;
 
   # Set your time zone.
   time.timeZone = "America/New_York";

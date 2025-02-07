@@ -1,12 +1,7 @@
 { lib, config, ... }: {
 
-    options = {
-        desktopbundle.enable = lib.mkEnableOption "enables desktop bundle";
-    };
-
-    config = lib.mkIf config.desktopbundle.enable {
-    };
-
+    options.desktopbundle.enable = lib.mkEnableOption "enables desktop bundle";
+    
     imports = [
         ./audio.nix
         ./disks.nix
@@ -16,4 +11,8 @@
         ./security.nix
         ./video.nix
     ];
+
+    config = lib.mkIf config.desktopbundle.enable {
+
+};
 }
