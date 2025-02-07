@@ -16,6 +16,7 @@
 	libvdpau-va-gl
   ];
 
+
   security = {
     tpm2 = {
       enable = true;
@@ -31,6 +32,8 @@
     }];
 
   };
+
+
 
 
 

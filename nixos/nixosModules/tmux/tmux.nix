@@ -3,6 +3,7 @@
     enable = true;
 
     extraConfigBeforePlugins = ''
+       set -g default-shell $HOME/.nix-profile/bin/zsh
 
        set -g mouse on 
 
