@@ -104,7 +104,7 @@
 
 
   services = {
-    flatpak.enable = true;
+        #flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     dbus.enable = true;
     xserver.enable = true;

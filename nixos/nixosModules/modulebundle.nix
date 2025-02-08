@@ -1,7 +1,7 @@
 { ... }: {
     imports = [
-        ./sway.nix
-        ./tmux/tmux.nix
+        #        ./sway.nix
+        ./tmux.nix
         ./virtualisation.nix
     ];
 }
