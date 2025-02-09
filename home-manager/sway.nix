@@ -18,7 +18,7 @@
         config = {
             modifier = "Mod4";
             terminal = "kitty";
-            bars = [];
+            bars = [{ statusCommand = "${pkgs.waybar}/bin/waybar"; }];
 
             menu = "fuzzel";
             input = {
