@@ -26,6 +26,7 @@
     fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    blender
     makemkv
     zoom-us
     fira-code

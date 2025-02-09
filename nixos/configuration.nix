@@ -18,7 +18,8 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux_6_12;
+    #boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Set your time zone.
   time.timeZone = "America/New_York";

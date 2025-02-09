@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
     hardware.opentabletdriver.enable = true;
-    hardware.decklink.enable = true;
+    #    hardware.decklink.enable = true;
 
   systemd.services."config-mglru" = {
     enable = true;
