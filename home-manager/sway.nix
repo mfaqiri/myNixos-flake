@@ -20,12 +20,18 @@
             terminal = "kitty";
             bars = [{ statusCommand = "${pkgs.waybar}/bin/waybar"; }];
 
+            startup = [
+                {
+                    command = "otd-daemon";
+                }
+
+                {
+                    command = "xrandr --output DP-1 --primary";
+                }
+            ];
+
+
             menu = "fuzzel";
-            input = {
-                "0:0:OpenTabletDriver_Virtual_Tablet" = {
-                    map_to_output = "DP-1";
-                };
-            };
             output = {
                 DP-3 = {
                     mode = "2560x1440@144Hz pos 0 0";
