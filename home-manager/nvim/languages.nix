@@ -16,12 +16,6 @@
 
     css.enable = true;
 
-    dart = {
-      enable = true;
-
-      flutter-tools.enable = true;
-    };
-
     go.enable = true;
 
     html.enable = true;

@@ -34,10 +34,10 @@
             menu = "fuzzel";
             output = {
                 DP-3 = {
-                    mode = "2560x1440@144Hz pos 0 0";
+                    mode = "3840x2160@144Hz pos 0 0";
                 }; 
                 DP-1 = {
-                    mode = "3840x2160@144Hz pos 2560 0";
+                    mode = "2560x1440@144Hz pos 3840 0";
                 }; 
                 DP-2 = {
                     mode = "2560x1440@60Hz pos 6400 0 transform 270 scale 1.4";
