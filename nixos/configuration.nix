@@ -105,11 +105,45 @@
 
 
   services = {
-        #flatpak.enable = true;
-    gnome.gnome-keyring.enable = true;
+    flatpak.enable = true;
+    gnome = {
+
+            gnome-keyring.enable = true;
+            core-utilities.enable = false;
+            localsearch.enable = false;
+            tinysparql.enable = false;
+        };
+
     dbus.enable = true;
-    xserver.enable = true;
-    xserver.displayManager.lightdm.enable = false;
+    xserver = {
+        enable = true;
+        displayManager = {
+            lightdm.enable = false;
+            gdm = {
+                    wayland = true;
+                    enable = true;
+                };
+            sessionPackages = [
+                    ((
+                        pkgs.writeTextDir "share/wayland-sessions/sway.desktop" ''[Desktop Entry]
+                    Name=sway
+                    Comment=Sway run from a login shell
+                    Exec=${pkgs.dbus}/bin/dbus-run-session -- bash -l -c sway
+                    Type=Application''
+                        ).overrideAttrs (oldAttrs: rec {
+                            passthru = {
+                                providedSessions = ["sway"];
+
+        };
+
+    })
+    )
+                ];
+        };
+
+        desktopManager.gnome.enable = true;
+
+        };
 
     openssh.enable = true;
 
@@ -136,6 +170,8 @@
 
 
  };
+
+  xdg.portal.enable = true;
 
 
 
