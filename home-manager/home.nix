@@ -26,6 +26,11 @@
     fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    grim
+    slurp
+    vinegar
+    dolphin-emu
+    librewolf
     blender
     makemkv
     zoom-us

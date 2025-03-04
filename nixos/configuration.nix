@@ -97,7 +97,6 @@
 	clinfo
 	git
 	adwaita-icon-theme
-	firefox
     kitty
 ];
 
