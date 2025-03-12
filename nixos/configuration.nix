@@ -91,6 +91,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    wayland-scanner
+    wayland-protocols
     alsa-utils
     libreoffice
     hunspell
@@ -98,13 +100,23 @@
 	clinfo
 	git
 	adwaita-icon-theme
-    kitty
+    tor-browser-bundle-bin
 ];
 
 
 
 
   services = {
+
+    tor = {
+
+            settings = {
+                UseBridges = true;
+                ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
+                Bridge = "obfs4 IP:ORPort [fingerprint]";
+            };
+        };
+
     flatpak.enable = true;
     gnome = {
 
@@ -171,7 +183,11 @@
 
  };
 
-  xdg.portal.enable = true;
+  xdg.portal = {
+        enable = true;
+
+        extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
+    };
 
 
 

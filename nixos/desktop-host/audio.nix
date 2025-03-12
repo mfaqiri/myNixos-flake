@@ -2,7 +2,6 @@
 
   environment.systemPackages = with pkgs; [
 	pavucontrol
-	ardour
 	spotify
 	ffmpeg
     qjackctl

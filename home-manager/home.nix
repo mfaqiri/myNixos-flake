@@ -26,6 +26,14 @@
     fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    inkscape
+    gimp
+    ardour
+    kitty
+    pass-wayland
+    vlc
+    godot_4
+    gdtoolkit_4
     grim
     slurp
     vinegar

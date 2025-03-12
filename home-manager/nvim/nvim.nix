@@ -11,6 +11,7 @@
 
       vim  = {
 
+
         binds = {
           cheatsheet.enable = true;
           whichKey.enable = true;
@@ -59,6 +60,11 @@
             package = harpoon;
             setup = "require('harpoon').setup {}";
             after = ["aerial"]; # place harpoon configuration after aerial
+          };
+
+          vim-godot = {
+            package = vim-godot;
+            setup = "event = 'VimEnter'";
           };
 
         };

@@ -1,6 +1,24 @@
 { ... }: {
 
-  programs.nvf.settings.vim.languages = {
+  programs.nvf.settings.vim = {
+
+        luaConfigRC.myconfig = /*lua*/''
+
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+            require('lspconfig').gdscript.setup(capabilities)
+
+
+            require('nvim-treesitter').setup {
+
+                auto_install = true,
+                highlight = { enable = true },
+                indent = { enable = false },
+            }
+
+                '';
+
+        languages = {
 
     enableLSP = true;
     enableFormat = true;
@@ -44,4 +62,5 @@
 
     ts.enable = true;
 };
+    };
 }

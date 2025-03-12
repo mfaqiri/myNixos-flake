@@ -1,37 +1,46 @@
 { config, ... }: {
-  programs.nvf.settings.vim.options = {
+  programs.nvf.settings.vim = 
+    {
 
-    guicursor = "";
+    tabline.nvimBufferline.setupOpts.options = {
+                tab_size = 2;
 
-    nu = true;
-    relativenumber = true;
+            };
 
-    tabstop = 4;
-    softtabstop = 4;
-    shiftwidth = 4;
-    expandtab = true;
+    options = {
 
-    smartindent = true;
+        guicursor = "";
 
-    wrap = false;
+        nu = true;
+        relativenumber = true;
 
-    swapfile = false;
-    backup = false;
+        tabstop = 4;
+        softtabstop = 4;
+        shiftwidth = 4;
+        expandtab = true;
 
-        #    undodir = "${config.users.users.mfaqiri.home}/.vim/undodir";
-        #undofile = true;
+        smartindent = true;
 
-    hlsearch = false;
-    incsearch = true;
+        wrap = false;
 
-    termguicolors = true;
+        swapfile = false;
+        backup = false;
 
-    scrolloff = 8;
-    signcolumn = "yes";
+            #    undodir = "${config.users.users.mfaqiri.home}/.vim/undodir";
+            #undofile = true;
 
-    updatetime = 50;
+        hlsearch = false;
+        incsearch = true;
 
-    colorcolumn = "80";
+        termguicolors = true;
+
+        scrolloff = 8;
+        signcolumn = "yes";
+
+        updatetime = 50;
+
+        colorcolumn = "80";
 
   };
+ };
 }
