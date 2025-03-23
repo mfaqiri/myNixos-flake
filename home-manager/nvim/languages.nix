@@ -6,7 +6,11 @@
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-            require('lspconfig').gdscript.setup(capabilities)
+            lspconfig = require('lspconfig')
+
+            lspconfig.gdscript.setup(capabilities)
+
+            lspconfig.cmake.setup(capabilities)
 
 
             require('nvim-treesitter').setup {
@@ -50,7 +54,7 @@
 
     nix.enable = true;
 
-    php.enable = true;
+            #php.enable = true;
 
     python.enable = true;
 

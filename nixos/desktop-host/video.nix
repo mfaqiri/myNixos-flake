@@ -12,6 +12,7 @@
 			obs-gstreamer
 			obs-vkcapture
 			obs-multi-rtmp
+            input-overlay
 		];
 	})
     ];

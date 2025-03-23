@@ -83,7 +83,6 @@
         users = {
             "mfaqiri" = import ../home-manager/home.nix;
         };
-
     };
 
 
@@ -91,8 +90,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wayland-scanner
-    wayland-protocols
+    cmake-language-server
+
     alsa-utils
     libreoffice
     hunspell
@@ -105,8 +104,25 @@
 
 
 
-
   services = {
+        displayManager = {
+            sessionPackages = [
+                    ((
+                        pkgs.writeTextDir "share/wayland-sessions/sway.desktop" ''[Desktop Entry]
+                    Name=sway
+                    Comment=Sway run from a login shell
+                    Exec=${pkgs.dbus}/bin/dbus-run-session -- bash -l -c sway
+                    Type=Application''
+                        ).overrideAttrs (oldAttrs: rec {
+                            passthru = {
+                                providedSessions = ["sway"];
+
+        };
+
+    })
+    )
+                ];
+        };
 
     tor = {
 
@@ -128,30 +144,13 @@
 
     dbus.enable = true;
     xserver = {
-        enable = true;
         displayManager = {
-            lightdm.enable = false;
-            gdm = {
-                    wayland = true;
-                    enable = true;
-                };
-            sessionPackages = [
-                    ((
-                        pkgs.writeTextDir "share/wayland-sessions/sway.desktop" ''[Desktop Entry]
-                    Name=sway
-                    Comment=Sway run from a login shell
-                    Exec=${pkgs.dbus}/bin/dbus-run-session -- bash -l -c sway
-                    Type=Application''
-                        ).overrideAttrs (oldAttrs: rec {
-                            passthru = {
-                                providedSessions = ["sway"];
+                lightdm.enable = false;
 
-        };
+                gdm.enable = true;
 
-    })
-    )
-                ];
-        };
+            };
+        enable = true;
 
         desktopManager.gnome.enable = true;
 

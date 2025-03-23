@@ -36,10 +36,9 @@
     gdtoolkit_4
     grim
     slurp
-    vinegar
     dolphin-emu
     librewolf
-    blender
+    blender-hip
     makemkv
     zoom-us
     fira-code
