@@ -1,30 +1,31 @@
 #Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./desktop-host/desktopbundle.nix
+    ./nixosModules/modulebundle.nix
+  ];
 
-{ inputs, pkgs, ... }: {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./desktop-host/desktopbundle.nix
-      ./nixosModules/modulebundle.nix
-    ];
-
-
-
-     nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-    #boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux_6_12;
+  #boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux_6_12;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -40,10 +41,6 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
-
-
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -55,113 +52,99 @@
   # hardware.pulseaudio.enable = true;
   # OR
 
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
-
- security.polkit.enable = true;
-
+  security.polkit.enable = true;
 
   users = {
     defaultUserShell = pkgs.zsh;
-  	users = {
-	  mfaqiri = {
-	    isNormalUser = true;
-	    extraGroups = [ "wheel" "power" "storage" "networkmanager" "sudo" "audio" "video" "tss" "libvirtd" "rtkit" ]; # Enable ‘sudo’ for the user.
-
+    users = {
+      mfaqiri = {
+        isNormalUser = true;
+        extraGroups = ["wheel" "power" "storage" "networkmanager" "sudo" "audio" "video" "tss" "libvirtd" "rtkit"]; # Enable ‘sudo’ for the user.
+      };
+    };
   };
-  };
-  };
-
-
 
   home-manager = {
-        extraSpecialArgs = { inherit inputs; };
-        users = {
-            "mfaqiri" = import ../home-manager/home.nix;
-        };
+    extraSpecialArgs = {inherit inputs;};
+    users = {
+      "mfaqiri" = import ../home-manager/home.nix;
     };
-
-
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    usbutils
+    alsa-scarlett-gui
     cmake-language-server
 
     alsa-utils
     libreoffice
     hunspell
-	wget
-	clinfo
-	git
-	adwaita-icon-theme
+    wget
+    clinfo
+    git
+    adwaita-icon-theme
     tor-browser-bundle-bin
-];
-
-
+  ];
 
   services = {
-        displayManager = {
-            sessionPackages = [
-                    ((
-                        pkgs.writeTextDir "share/wayland-sessions/sway.desktop" ''[Desktop Entry]
-                    Name=sway
-                    Comment=Sway run from a login shell
-                    Exec=${pkgs.dbus}/bin/dbus-run-session -- bash -l -c sway
-                    Type=Application''
-                        ).overrideAttrs (oldAttrs: rec {
-                            passthru = {
-                                providedSessions = ["sway"];
-
-        };
-
-    })
-    )
-                ];
-        };
+    displayManager = {
+      sessionPackages = [
+        (
+          (
+            pkgs.writeTextDir "share/wayland-sessions/sway.desktop" ''              [Desktop Entry]
+                                  Name=sway
+                                  Comment=Sway run from a login shell
+                                  Exec=${pkgs.dbus}/bin/dbus-run-session -- bash -l -c sway
+                                  Type=Application''
+          )
+          .overrideAttrs (oldAttrs: rec {
+            passthru = {
+              providedSessions = ["sway"];
+            };
+          })
+        )
+      ];
+    };
 
     tor = {
-
-            settings = {
-                UseBridges = true;
-                ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
-                Bridge = "obfs4 IP:ORPort [fingerprint]";
-            };
-        };
+      settings = {
+        UseBridges = true;
+        ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
+        Bridge = "obfs4 IP:ORPort [fingerprint]";
+      };
+    };
 
     flatpak.enable = true;
     gnome = {
-
-            gnome-keyring.enable = true;
-            core-utilities.enable = false;
-            localsearch.enable = false;
-            tinysparql.enable = false;
-        };
+      gnome-keyring.enable = true;
+      core-utilities.enable = false;
+      localsearch.enable = false;
+      tinysparql.enable = false;
+    };
 
     dbus.enable = true;
     xserver = {
-        displayManager = {
-                lightdm.enable = false;
+      displayManager = {
+        lightdm.enable = false;
 
-                gdm.enable = true;
+        gdm.enable = true;
+      };
+      enable = true;
 
-            };
-        enable = true;
-
-        desktopManager.gnome.enable = true;
-
-        };
+      desktopManager.gnome.enable = true;
+    };
 
     openssh.enable = true;
 
     ntp.enable = true;
-
   };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -171,26 +154,20 @@
 
   # Enable the OpenSSH daemon.
 
- programs = {
-  zsh.enable = true;
+  programs = {
+    zsh.enable = true;
 
-  gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-   };
-
-
- };
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  };
 
   xdg.portal = {
-        enable = true;
+    enable = true;
 
-        extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
-    };
-
-
-
-
+    extraPortals = with pkgs; [xdg-desktop-portal-wlr];
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -215,6 +192,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
-

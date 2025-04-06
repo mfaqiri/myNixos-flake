@@ -1,11 +1,13 @@
-{  inputs, pkgs, ... }:
-
 {
-    imports = [
-       inputs.nvf.homeManagerModules.default
-       ./nvim/nvim.nix
-       ./sway.nix
-    ];
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    inputs.nvf.homeManagerModules.default
+    ./nvim/nvim.nix
+    ./sway.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   nixpkgs.config.allowUnfree = true;
@@ -23,9 +25,15 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-    fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    protonvpn-gui
+    ryujinx
+    networkmanager-openvpn
+    torzu
+    slack
+    pureref
     inkscape
     gimp
     ardour
@@ -37,7 +45,7 @@
     grim
     slurp
     dolphin-emu
-    librewolf
+    (librewolf.override {extraNativeMessagingHosts = [passff-host];})
     blender-hip
     makemkv
     zoom-us
@@ -85,71 +93,64 @@
     # '';
   };
 
-	programs = {
-
+  programs = {
     zsh = {
       enable = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-          ll = "ls -l";
-          update = "sudo nixos-rebuild switch --flake /home/mfaqiri/mysystem#myNixos";
+        ll = "ls -l";
+        update = "sudo nixos-rebuild switch --flake /home/mfaqiri/mysystem#myNixos";
       };
 
       zplug = {
-          enable = true;
-          plugins = [
-                    { name = "zsh-users/zsh-autosuggestions"; }
-                    {
-                        name = "ergenekonyigit/lambda-gitster";
-                        tags = [ "as:theme" ];
-                    }
-                    { name = "chisui/zsh-nix-shell"; }
-                ];
-            };
+        enable = true;
+        plugins = [
+          {name = "zsh-users/zsh-autosuggestions";}
+          {
+            name = "ergenekonyigit/lambda-gitster";
+            tags = ["as:theme"];
+          }
+          {name = "chisui/zsh-nix-shell";}
+        ];
+      };
 
-
-        history.size = 10000;
-        history.ignoreAllDups = true;
-        history.path = "$HOME/.zsh_history";
+      history.size = 10000;
+      history.ignoreAllDups = true;
+      history.path = "$HOME/.zsh_history";
     };
     yazi.enable = true;
 
     zoxide = {
       enable = true;
       enableZshIntegration = true;
-      options = [ "--cmd cd" ];
+      options = ["--cmd cd"];
     };
+  };
 
- };
-
-
-
-    dconf.settings = {
-      "org/gnome/desktop/background" = {
-        picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
-      };
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
+  dconf.settings = {
+    "org/gnome/desktop/background" = {
+      picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
     };
-
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Adwaita-dark";
-        package = pkgs.gnome-themes-extra;
-      };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
     };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+  };
 
   qt = {
     enable = true;
     platformTheme.name = "adwaita";
     style.name = "adwaita-dark";
   };
-
-
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -167,7 +168,6 @@
   #
   #  /etc/profiles/per-user/mfaqiri/etc/profile.d/hm-session-vars.sh
   #
-
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
