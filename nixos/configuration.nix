@@ -78,19 +78,23 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    usbutils
-    alsa-scarlett-gui
-    cmake-language-server
+  environment.systemPackages = [
+    pkgs.usbutils
+    pkgs.alsa-scarlett-gui
+    pkgs.cmake-language-server
 
-    alsa-utils
-    libreoffice
-    hunspell
-    wget
-    clinfo
-    git
-    adwaita-icon-theme
-    tor-browser-bundle-bin
+    pkgs.alsa-utils
+    pkgs.libreoffice
+    pkgs.hunspell
+    pkgs.wget
+    pkgs.clinfo
+    pkgs.git
+    pkgs.adwaita-icon-theme
+    pkgs.tor-browser-bundle-bin
+    ((pkgs.r2modman).overrideAttrs
+      (finalAttrs: previousAttrs: {
+        version = "3.1.57";
+      }))
   ];
 
   services = {
@@ -104,7 +108,7 @@
                                   Exec=${pkgs.dbus}/bin/dbus-run-session -- bash -l -c sway
                                   Type=Application''
           )
-          .overrideAttrs (oldAttrs: rec {
+          .overrideAttrs (oldAttrs: {
             passthru = {
               providedSessions = ["sway"];
             };

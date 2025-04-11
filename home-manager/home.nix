@@ -45,7 +45,7 @@
     grim
     slurp
     dolphin-emu
-    (librewolf.override {extraNativeMessagingHosts = [passff-host];})
+    (librewolf.override {nativeMessagingHosts = [passff-host];})
     blender-hip
     makemkv
     zoom-us
