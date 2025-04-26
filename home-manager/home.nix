@@ -28,7 +28,10 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    protonvpn-gui
+    thunderbird
+    freerdp
+    htop
+    krita
     ryujinx
     networkmanager-openvpn
     torzu
@@ -38,7 +41,8 @@
     gimp
     ardour
     kitty
-    pass-wayland
+    (pass-wayland.withExtensions
+      (exts: [exts.pass-otp]))
     vlc
     godot_4
     gdtoolkit_4
@@ -48,7 +52,6 @@
     (librewolf.override {nativeMessagingHosts = [passff-host];})
     blender-hip
     makemkv
-    zoom-us
     fira-code
     fira-code-symbols
     font-awesome
