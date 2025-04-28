@@ -28,6 +28,10 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    kubectl
+    minikube
+    osu-lazer
+    revolt-desktop
     thunderbird
     freerdp
     htop

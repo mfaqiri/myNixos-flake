@@ -78,23 +78,19 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = [
-    pkgs.usbutils
-    pkgs.alsa-scarlett-gui
-    pkgs.cmake-language-server
-
-    pkgs.alsa-utils
-    pkgs.libreoffice
-    pkgs.hunspell
-    pkgs.wget
-    pkgs.clinfo
-    pkgs.git
-    pkgs.adwaita-icon-theme
-    pkgs.tor-browser-bundle-bin
-    ((pkgs.r2modman).overrideAttrs
-      (finalAttrs: previousAttrs: {
-        version = "3.1.57";
-      }))
+  environment.systemPackages = with pkgs; [
+    usbutils
+    alsa-scarlett-gui
+    cmake-language-server
+    alsa-utils
+    libreoffice
+    hunspell
+    wget
+    clinfo
+    git
+    adwaita-icon-theme
+    tor-browser-bundle-bin
+    r2modman
   ];
 
   services = {
