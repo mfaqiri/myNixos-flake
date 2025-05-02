@@ -64,7 +64,7 @@
     users = {
       mfaqiri = {
         isNormalUser = true;
-        extraGroups = ["wheel" "power" "storage" "networkmanager" "sudo" "audio" "video" "tss" "libvirtd" "rtkit"]; # Enable ‘sudo’ for the user.
+        extraGroups = ["wheel" "power" "storage" "networkmanager" "sudo" "audio" "video" "tss" "libvirtd" "rtkit" "docker"]; # Enable ‘sudo’ for the user.
       };
     };
   };

@@ -28,6 +28,8 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    docker-compose
+    postman
     kubectl
     minikube
     osu-lazer
