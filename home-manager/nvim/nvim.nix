@@ -17,10 +17,10 @@
         git = {
           enable = true;
 
-          #          gitsigns = {
-          #       enable = true;
-          #            codeActions.enable = true;
-          #          };
+          gitsigns = {
+            enable = true;
+            codeActions.enable = true;
+          };
 
           vim-fugitive.enable = true;
         };
